@@ -1,3 +1,4 @@
+// build.sbt
 name := "SendDataToKafka"
 
 version := "0.1"
@@ -12,3 +13,10 @@ libraryDependencies ++= Seq(
 )
 
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = true)
+
+mainClass in assembly := Some("SendDataToKafka")
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
