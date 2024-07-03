@@ -24,10 +24,31 @@ object SendDataToKafka {
 
       val dfFromText = spark.read.json(Seq(response).toDS)
 
+      /*
       // Select the columns you want to include in the message
       val messageDF = dfFromText.select($"id", $"stationName", $"lineName", $"towards",
         $"expectedArrival", $"vehicleId", $"platformName", $"direction", $"destinationName",
         $"timestamp", $"timeToStation", $"currentLocation", $"timeToLive")
+      */
+
+      // Assuming dfFromText is your DataFrame containing data from the API
+      val messageDF = dfFromText.select(
+        $"id",
+        $"stationName",
+        $"lineName",
+        $"towards",
+        $"expectedArrival",
+        $"vehicleId",
+        $"platformName",
+        $"currentLocation",
+        $"timeToLive",
+        $"timeToStation",
+        $"timestamp",
+        $"direction",
+        $"destinationName"
+      )
+
+      
 
       val kafkaServer: String = "ip-172-31-3-80.eu-west-2.compute.internal:9092"
       val topicSampleName: String = "arrivaldata"
