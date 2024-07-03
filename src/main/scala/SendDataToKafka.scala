@@ -13,7 +13,8 @@ object SendDataToKafka {
 
     while (true) {
       import spark.implicits._
-      val apiUrl = "https://api.tfl.gov.uk/Line/victoria/Arrivals?app_id=92293faa428041caad3dd647d39753a0&app_key=ba72936a3db54b4ba5792dc8f7acc043"
+      //val apiUrl = "https://api.tfl.gov.uk/Line/victoria/Arrivals?app_id=92293faa428041caad3dd647d39753a0&app_key=ba72936a3db54b4ba5792dc8f7acc043"
+      val apiUrl = "http://3.8.164.165:5000/api/data"
       val url = new URL(apiUrl)
       val connection = url.openConnection().asInstanceOf[HttpURLConnection]
       connection.setRequestMethod("GET")
@@ -34,18 +35,10 @@ object SendDataToKafka {
       // Assuming dfFromText is your DataFrame containing data from the API
       val messageDF = dfFromText.select(
         $"id",
-        $"stationName",
-        $"lineName",
-        $"towards",
-        $"expectedArrival",
-        $"vehicleId",
-        $"platformName",
-        $"currentLocation",
-        $"timeToLive",
-        $"timeToStation",
-        $"timestamp",
-        $"direction",
-        $"destinationName"
+        $"bonus",
+        $"city",
+        $"department",
+        $"salary"
       )
 
 
