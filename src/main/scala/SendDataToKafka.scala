@@ -104,7 +104,7 @@ object SendDataToKafka {
         val messageWithKeyDF = messageDF.withColumn("key", concat($"Neighborhood", lit("_"), $"YearBuilt"))
 
         val kafkaServer: String = "ip-172-31-3-80.eu-west-2.compute.internal:9092"
-        val topicSampleName: String = "arrivaldata"
+        val topicSampleName: String = "Tekle_house_price"
 
         messageWithKeyDF.selectExpr("CAST(key AS STRING)", "to_json(struct(*)) AS value")
           .write
