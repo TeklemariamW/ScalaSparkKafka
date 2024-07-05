@@ -69,7 +69,7 @@ object ReadFromKafka {
     )
 
     // Define the Kafka topic to subscribe to
-    val topic = "arrivaldata" // Change the topic to your new topic
+    val topic = "Tekle_house_price" // Change the topic to your new topic
 
     // Define the schema for the JSON messages
     val schema = StructType(Seq(

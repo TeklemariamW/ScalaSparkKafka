@@ -34,13 +34,13 @@ object SendDataToKafka {
 
       // Assuming dfFromText is your DataFrame containing data from the API
       val messageDF = dfFromText.select(
-        $"id",
-        $"bonus",
-        $"city",
-        $"department",
-        $"salary"
+        $"Bathrooms",
+        $"Bedrooms",
+        $"Neighborhood",
+        $"Price",
+        $"SquareFeet",
+        $"YearBuilt"
       )
-
 
 
       val kafkaServer: String = "ip-172-31-3-80.eu-west-2.compute.internal:9092"
