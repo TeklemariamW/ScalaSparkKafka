@@ -79,7 +79,8 @@ object SendDataToKafka {
       try {
         import spark.implicits._
 
-        val apiUrl = "http://3.8.164.165:5000/api/data"
+        //val apiUrl = "http://3.8.164.165:5000/api/data"
+        val apiUrl = "http://3.8.164.165:5000//api/last_10000"
         val url = new URL(apiUrl)
         val connection = url.openConnection().asInstanceOf[HttpURLConnection]
         connection.setRequestMethod("GET")
